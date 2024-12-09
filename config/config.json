@@ -1,9 +1,9 @@
 {
     "development": {
-      "username": "root",
+      "username": "admin",
       "password": "helloAtu21.",
-      "database": "Crehor",
-      "host": "127.0.0.1",
+      "database": "crehor",
+      "host": "database-3.c5y2asasq1r1.us-east-1.rds.amazonaws.com",
       "dialect": "mysql"
     }
   }

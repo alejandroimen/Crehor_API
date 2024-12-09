@@ -7,12 +7,14 @@ module.exports = ( sequelize, DataTypes ) => {
             primaryKey: true,
             autoIncrement: true
         },
-        courseId: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'courses',
-                key: 'id'
-            }
+        subjectId: {
+            type: DataTypes.INTEGER
+        },
+        teacherId: {
+            type: DataTypes.INTEGER
+        },
+        groupId: {
+            type: DataTypes.INTEGER
         },
         day: {
             type: DataTypes.INTEGER,
@@ -23,6 +25,12 @@ module.exports = ( sequelize, DataTypes ) => {
     }, {
         timestamps: false
     })
+
+    Schedule.associate = (models) => {
+        Schedule.belongsTo(models.Subject, { foreignKey: 'subjectId' });
+        Schedule.belongsTo(models.Teacher, { foreignKey: 'teacherId' });
+        Schedule.belongsTo(models.Group, { foreignKey: 'groupId' });
+      };
 
     return Schedule
 }

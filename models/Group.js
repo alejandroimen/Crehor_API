@@ -12,10 +12,17 @@ module.exports = ( sequelize, DataTypes ) => {
         },
         group: {
             type: DataTypes.STRING
+        },
+        hasSchedule: {
+            type: DataTypes.BOOLEAN
         }
     }, {
         timestamps: false
     })
     
+    Group.associate = (models) => {
+        Group.hasMany(models.Schedule, { foreignKey: 'groupId' });
+    };
+
     return Group
 }

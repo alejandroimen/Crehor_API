@@ -30,6 +30,9 @@ module.exports = ( sequelize, DataTypes ) => {
     }, {
         timestamps: false
     })
+    Subject.associate = (models) => {
+        Subject.hasMany(models.Schedule, { foreignKey: 'subjectId' });
+    };
 
     return Subject
 }

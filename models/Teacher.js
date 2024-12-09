@@ -23,7 +23,7 @@ module.exports = (sequelize, Datatypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'specialisms',
+                model: 'Specialisms',
                 key: 'id'
             }
         },
@@ -31,9 +31,13 @@ module.exports = (sequelize, Datatypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-    },  {
+    }, {
         timestamps: false
     })
+
+    Teacher.associate = (models) => {
+        Teacher.hasMany(models.Schedule, { foreignKey: 'teacherId' });
+    };
 
     return Teacher
 }
